@@ -14,7 +14,7 @@ route.post('/', async function (requisition, response) {
     } = requisition.body;
 
     var resp;
-    console.log(req.body);
+    console.log(requisition.body);
 
     try {
         resp = await kcAdminClient.users.create({
@@ -27,10 +27,9 @@ route.post('/', async function (requisition, response) {
         });
     } catch (error) {
         console.log(error);
-        res.status(400).send(error);
+        response.status(400).send(error);
     }
-
-    res.status(200).send(response);
+    response.status(200).send(resp);
 
 });
 
